@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gonçalo Maths & Informática — Pautas e Registo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1b4d3e;
+            --secondary-color: #2e8b57;
+            --accent-color: #ffcc00;
+            --bg-color: #f4f9f4;
+            --text-color: #333333;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(#d1e7dd 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            text-align: center;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            color: var(--accent-color);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .menu-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-menu {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .btn-menu:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: none; /* Escondido até clicar no botão */
+        }
+
+        .active-section {
+            display: block;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            border-bottom: 3px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #d1e7dd;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9fbf9;
+        }
+
+        input[type="text"], input[type="date"], input[type="time"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        input[type="text"]:focus, select:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+            box-shadow: 0 0 4px rgba(46, 139, 87, 0.3);
+        }
+
+        .btn-action {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .btn-action:hover {
+            background-color: var(--secondary-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Gonçalo Maths & Informática</h1>
+            <p>Sistema de Gestão de Presenças, Materiais e Registo do Professor</p>
+        </header>
+
+        <div class="menu-buttons">
+            <button class="btn-menu" onclick="mostrarSecao('seccao-presencas')">👥 Pauta de Alunos (Presenças & Material)</button>
+            <button class="btn-menu" onclick="mostrarSecao('seccao-professor')">👨‍🏫 Registo do Professor Gonçalo Costa</button>
+        </div>
+
+        <section id="seccao-presencas" class="active-section">
+            <h2>Gonçalo Maths & Informática — Pauta de Presença e Material dos Alunos</h2>
+            <p style="margin-bottom: 15px; color: #555;">Preenche diretamente nos campos em branco conforme os alunos comparecem ou faltam ao material.</p>
+            
+            <div class="table-container">
+                <table id="tabelaAlunos">
+                    <thead>
+                        <tr>
+                            <th>Nome do Aluno</th>
+                            <th>Disciplina</th>
+                            <th>Veio / Faltou?</th>
+                            <th>Falta de Material?</th>
+                            <th>Observações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><input type="text" placeholder="Nome do aluno..."></td><td><input type="text" placeholder="Ex: Matemática"></td><td><select><option value="">-- Selecionar --</option><option value="Veio">Veio (Presente)</option><option value="Faltou">Faltou</option></select></td><td><select><option value="">-- Selecionar --</option><option value="Sim">Sim (Falta)</option><option value="Nao">Não (Tem)</option></select></td><td><input type="text" placeholder="Nota extra..."></td></tr>
+                        <tr><td><input type="text" placeholder="Nome do aluno..."></td><td><input type="text" placeholder="Ex: Matemática"></td><td><select><option value="">-- Selecionar --</option><option value="Veio">Veio (Presente)</option><option value="Faltou">Faltou</option></select></td><td><select><option value="">-- Selecionar --</option><option value="Sim">Sim (Falta)</option><option value="Nao">Não (Tem)</option></select></td><td><input type="text" placeholder="Nota extra..."></td></tr>
+                        <tr><td><input type="text" placeholder="Nome do aluno..."></td><td><input type="text" placeholder="Ex: Matemática"></td><td><select><option value="">-- Selecionar --</option><option value="Veio">Veio (Presente)</option><option value="Faltou">Faltou</option></select></td><td><select><option value="">-- Selecionar --</option><option value="Sim">Sim (Falta)</option><option value="Nao">Não (Tem)</option></select></td><td><input type="text" placeholder="Nota extra..."></td></tr>
+                        <tr><td><input type="text" placeholder="Nome do aluno..."></td><td><input type="text" placeholder="Ex: Matemática"></td><td><select><option value="">-- Selecionar --</option><option value="Veio">Veio (Presente)</option><option value="Faltou">Faltou</option></select></td><td><select><option value="">-- Selecionar --</option><option value="Sim">Sim (Falta)</option><option value="Nao">Não (Tem)</option></select></td><td><input type="text" placeholder="Nota extra..."></td></tr>
+                        <tr><td><input type="text" placeholder="Nome do aluno..."></td><td><input type="text" placeholder="Ex: Matemática"></td><td><select><option value="">-- Selecionar --</option><option value="Veio">Veio (Presente)</option><option value="Faltou">Faltou</option></select></td><td><select><option value="">-- Selecionar --</option><option value="Sim">Sim (Falta)</option><option value="Nao">Não (Tem)</option></select></td><td><input type="text" placeholder="Nota extra..."></td></tr>
+                        <tr><td><input type="text" placeholder="Nome do aluno..."></td><td><input type="text" placeholder="Ex: Matemática"></td><td><select><option value="">-- Selecionar --</option><option value="Veio">Veio (Presente)</option><option value="Faltou">Faltou</option></select></td><td><select><option value="">-- Selecionar --</option><option value="Sim">Sim (Falta)</option><option value="Nao">Não (Tem)</option></select></td><td><input type="text" placeholder="Nota extra..."></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn-action" onclick="adicionarLinhaAluno()">➕ Adicionar Nova Linha</button>
+        </section>
+
+        <section id="seccao-professor">
+            <h2>Gonçalo Maths & Informática — Registo do Professor Gonçalo Costa</h2>
+            <p style="margin-bottom: 15px; color: #555;">Regista as tuas explicações, horários, alunos e valores recebidos.</p>
+            
+            <div class="table-container">
+                <table id="tabelaProfessor">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Horário</th>
+                            <th>Nome do Aluno</th>
+                            <th>Disciplina / Campanha</th>
+                            <th>Duração (h)</th>
+                            <th>Valor (€)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><input type="date"></td><td><input type="text" placeholder="Ex: 15h - 17h"></td><td><input type="text" placeholder="Nome do aluno..."></td><td><input type="text" placeholder="Ex: 2 Horas (9€/h)"></td><td><input type="text" placeholder="Ex: 2h"></td><td><input type="text" placeholder="Ex: 18€"></td></tr>
+                        <tr><td><input type="date"></td><td><input type="text" placeholder="Ex: 15h - 17h"></td><td><input type="text" placeholder="Nome do aluno..."></td><td><input type="text" placeholder="Ex: 2 Horas (9€/h)"></td><td><input type="text" placeholder="Ex: 2h"></td><td><input type="text" placeholder="Ex: 18€"></td></tr>
+                        <tr><td><input type="date"></td><td><input type="text" placeholder="Ex: 15h - 17h"></td><td><input type="text" placeholder="Nome do aluno..."></td><td><input type="text" placeholder="Ex: 2 Horas (9€/h)"></td><td><input type="text" placeholder="Ex: 2h"></td><td><input type="text" placeholder="Ex: 18€"></td></tr>
+                        <tr><td><input type="date"></td><td><input type="text" placeholder="Ex: 15h - 17h"></td><td><input type="text" placeholder="Nome do aluno..."></td><td><input type="text" placeholder="Ex: 2 Horas (9€/h)"></td><td><input type="text" placeholder="Ex: 2h"></td><td><input type="text" placeholder="Ex: 18€"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn-action" onclick="adicionarLinhaProfessor()">➕ Adicionar Nova Aula</button>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Gonçalo Maths & Informática. Todos os direitos reservados.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function mostrarSecao(idSecao) {
+            document.getElementById('seccao-presencas').classList.remove('active-section');
+            document.getElementById('seccao-professor').classList.remove('active-section');
+            document.getElementById(idSecao).classList.add('active-section');
+        }
+
+        function adicionarLinhaAluno() {
+            const tabela = document.getElementById('tabelaAlunos').getElementsByTagName('tbody')[0];
+            const novaLinha = tabela.insertRow();
+            novaLinha.innerHTML = `
+                <td><input type="text" placeholder="Nome do aluno..."></td>
+                <td><input type="text" placeholder="Ex: Matemática"></td>
+                <td><select><option value="">-- Selecionar --</option><option value="Veio">Veio (Presente)</option><option value="Faltou">Faltou</option></select></td>
+                <td><select><option value="">-- Selecionar --</option><option value="Sim">Sim (Falta)</option><option value="Nao">Não (Tem)</option></select></td>
+                <td><input type="text" placeholder="Nota extra..."></td>
+            `;
+        }
+
+        function adicionarLinhaProfessor() {
+            const tabela = document.getElementById('tabelaProfessor').getElementsByTagName('tbody')[0];
+            const novaLinha = tabela.insertRow();
+            novaLinha.innerHTML = `
+                <td><input type="date"></td>
+                <td><input type="text" placeholder="Ex: 15h - 17h"></td>
+                <td><input type="text" placeholder="Nome do aluno..."></td>
+                <td><input type="text" placeholder="Ex: 2 Horas (9€/h)"></td>
+                <td><input type="text" placeholder="Ex: 2h"></td>
+                <td><input type="text" placeholder="Ex: 18€"></td>
+            `;
+        }
+    </script>
+</body>
+</html>
